@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Farmer Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <h1 style="margin:0; border:none;">Farmer Dashboard</h1>
+    <span id="farmerName"></span>
+  </div>
+
+  <h2>Price trends</h2>
+  <select id="cropSelect">
+    <option value="onion">Onion</option>
+    <option value="tomato">Tomato</option>
+    <option value="cotton">Cotton</option>
+  </select>
+  <canvas id="priceChart" height="150"></canvas>
+  <div id="signalText" class="signal-card"></div>
+
+  <h2>List your produce</h2>
+  <form id="listingForm" class="card">
+    <label>Crop</label>
+    <input id="crop" placeholder="e.g. onion" required>
+    <label>Quantity (kg)</label>
+    <input id="quantity" type="number" required>
+    <label>Expected price (per unit)</label>
+    <input id="expected_price" type="number" required>
+    <label>Location</label>
+    <input id="location" placeholder="e.g. Nashik" required>
+    <button type="submit">Create listing</button>
+  </form>
+
+  <h2>My listings</h2>
+  <div id="myListings"></div>
+
+  <h2>Matched buyers</h2>
+  <div id="matchesArea"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/farmer.js"></script>
+</body>
+</html>

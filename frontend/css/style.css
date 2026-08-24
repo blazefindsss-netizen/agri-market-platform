@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --forest: #1F3A2E;
+  --leaf: #4A7C59;
+  --leaf-dark: #3A6247;
+  --gold: #D9A441;
+  --wheat: #FAF6EE;
+  --soil: #6B4A34;
+  --card: #FFFFFF;
+  --text: #2B2620;
+  --text-muted: #6E6A61;
+  --rising: #B4453A;
+  --falling: #3A7D5C;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--wheat);
+  color: var(--text);
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  line-height: 1.5;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 2.1rem;
+  color: var(--forest);
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--forest);
+  margin: 36px 0 12px;
+}
+
+p { color: var(--text-muted); }
+
+label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--soil);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  margin: 6px 0 14px;
+  border: 1.5px solid #E4DDCB;
+  border-radius: 8px;
+  background: var(--card);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--leaf);
+}
+
+button {
+  background: var(--leaf);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+button:hover { background: var(--leaf-dark); }
+button:active { transform: scale(0.98); }
+
+a { color: var(--leaf-dark); font-weight: 500; }
+
+.card {
+  background: var(--card);
+  padding: 18px 20px;
+  border-radius: 12px;
+  margin: 12px 0;
+  border: 1px solid #EEE7D6;
+  box-shadow: 0 1px 2px rgba(31,58,46,0.04);
+}
+
+.card strong {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  color: var(--forest);
+}
+
+.price {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--soil);
+}
+
+.signal-card {
+  background: var(--forest);
+  color: var(--wheat);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  margin: 8px 0 20px;
+}
+
+.signal-card.rising { border-left: 4px solid var(--rising); }
+.signal-card.falling { border-left: 4px solid var(--falling); }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge.open { background: #E8F3EC; color: var(--falling); }
+.badge.pending { background: #FBF0DC; color: var(--gold); }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--forest);
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+.topbar span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--soil);
+}
+
+canvas { margin: 16px 0; }

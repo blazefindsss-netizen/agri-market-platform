@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Buyer Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <h1 style="margin:0; border:none;">Buyer Dashboard</h1>
+    <span id="buyerName"></span>
+  </div>
+
+  <h2>Post demand</h2>
+  <form id="demandForm" class="card">
+    <label>Crop</label>
+    <input id="crop" placeholder="e.g. onion" required>
+    <label>Quantity needed (kg)</label>
+    <input id="quantity_needed" type="number" required>
+    <label>Min price</label>
+    <input id="price_min" type="number" required>
+    <label>Max price</label>
+    <input id="price_max" type="number" required>
+    <label>Location</label>
+    <input id="location" placeholder="e.g. Nashik" required>
+    <button type="submit">Post demand</button>
+  </form>
+
+  <h2>My demands</h2>
+  <div id="myDemands"></div>
+
+  <h2>Offers received</h2>
+  <div id="offersArea"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/buyer.js"></script>
+</body>
+</html>

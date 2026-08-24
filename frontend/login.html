@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Log in</h1>
+  <form id="loginForm" class="card">
+    <label>Phone number</label>
+    <input id="phone" placeholder="Phone number" required>
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Password" required>
+    <button type="submit">Log In</button>
+  </form>
+  <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+
+  <script src="js/api.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/translate.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = await apiCall('/auth/login', 'POST', {
+        phone: document.getElementById('phone').value,
+        password: document.getElementById('password').value
+      });
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('role', data.user.role);
+window.location.href = data.user.role === 'farmer' ? 'market-intelligence.html' : 'buyer-market.html';        alert('Login failed: ' + (data.error || 'Invalid credentials'));
+      }
+    });
+  </script>
+</body>
+</html>

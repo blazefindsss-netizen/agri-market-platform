@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriHarvest - Market Intelligence</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#281800",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#a1d494",
+                        "background": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed": "#d4e3ff",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffddb0",
+                        "surface": "#f8f9fa",
+                        "surface-tint": "#3b6934",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2d5a27",
+                        "primary-fixed-dim": "#a1d494",
+                        "secondary-container": "#feba47",
+                        "on-primary-fixed-variant": "#23501e",
+                        "surface-variant": "#e1e3e4",
+                        "outline": "#72796e",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-background": "#191c1d",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#bcf0ae",
+                        "on-primary-container": "#9dd090",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-container": "#704b00",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "tertiary-container": "#005193",
+                        "on-surface-variant": "#42493e",
+                        "primary": "#154212",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#805600",
+                        "on-tertiary-container": "#9cc5ff",
+                        "on-tertiary-fixed": "#001c39",
+                        "surface-container-high": "#e7e8e9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#003a6c",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c2c9bb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "secondary-fixed-dim": "#feba47"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "48px",
+                        "stack-sm": "0.5rem",
+                        "margin-mobile": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-md": "1rem",
+                        "gutter-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen font-body-md">
+<header class="bg-surface dark:bg-inverse-surface text-primary dark:text-inverse-primary bg-surface dark:bg-inverse-surface shadow-sm shadow-sm dark:shadow-none fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16">
+<button aria-label="Menu" class="flex items-center justify-center w-touch-target-min h-touch-target-min hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:opacity-80 transition-opacity rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="agriculture">agriculture</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">AgriHarvest</h1>
+<button aria-label="Notifications" class="flex items-center justify-center w-touch-target-min h-touch-target-min hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:opacity-80 transition-opacity rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile flex flex-col gap-stack-lg max-w-4xl mx-auto">
+<section class="flex flex-col gap-stack-sm w-full">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Market Intelligence</h2>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-label-md text-label-md">Nashik, MH</span>
+</div>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input id="searchInput" class="w-full h-touch-target-min pl-12 pr-12 bg-surface-container-lowest border border-outline-variant rounded-full font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm" placeholder="Search crops, markets, logistics..." type="text"/>
+<button onclick="startVoiceInput('searchInput', 'en-IN')" class="absolute right-3 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+</section>
+<!-- Recommendation Banner -->
+<section class="bg-secondary-container rounded-xl p-4 flex gap-4 items-start shadow-md relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">trending_up</span>
+</div>
+<div class="bg-surface-container-lowest rounded-full p-2 shrink-0 z-10 shadow-sm text-secondary">
+<span class="material-symbols-outlined fill">campaign</span>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<span class="font-label-md text-label-md text-on-secondary-container">Strategic Insight</span>
+<p class="font-body-md text-body-md text-on-secondary-container font-medium" id="recommendationText">Loading recommendation...</p>
+<div class="inline-flex items-center gap-1 bg-surface-container-lowest/50 rounded px-2 py-1 mt-1 w-max border border-secondary/20">
+<span class="material-symbols-outlined text-[14px] text-secondary">timer</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container" id="signalBadge"></span>
+</div>
+<button onclick="speakText(document.getElementById('recommendationText').innerText, 'en-IN')" class="mt-2 flex items-center gap-1 text-xs font-semibold text-primary underline">
+<span class="material-symbols-outlined text-[16px]">volume_up</span> Listen
+</button>
+</div>
+</section>
+<!-- Real-time Mandi Prices -->
+<section class="flex flex-col gap-stack-md w-full">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Live Mandi Prices</h3>
+<button class="font-label-md text-label-md text-primary flex items-center gap-1 hover:underline">
+                    View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex overflow-x-auto snap-x snap-mandatory gap-gutter-md pb-4 no-scrollbar -mx-margin-mobile px-margin-mobile">
+<!-- Card 1: Onion -->
+<div class="snap-center shrink-0 w-[240px] bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border-t-[2px] border-primary overflow-hidden flex flex-col group relative">
+<div class="h-20 w-full bg-cover bg-center relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAy0XdKm9K2uELSmP-RXPLDWi9b7sw_xt_lFc8YuRoYRZp9cpny68tXh0ncnubrv26wtpjo-Z1XnG4iiu4IjMJbFlxWLqhSZRrMtUj9tjVPHGvqirK9Zsr6DFidmQwEhFsmXQr_w5q2gKxeflzjGQyE-M2QVjegdmg2clUwlKBc6oWmJxCFpk8X7RJ1waxvK2R4Tlu28s9ZtXb1EsWn5E3LOCmLqCb4PfsZC-Dv7mkFa3EG59Zrw6l43Q')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-4 flex flex-col gap-2 relative z-10 -mt-8">
+<div class="bg-surface-container-lowest rounded shadow-sm w-max px-2 py-1 mb-1">
+<span class="font-label-md text-label-md text-on-surface">Onion (Nashik)</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface" id="price-onion">Loading...<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/qtl</span></span>
+</div>
+<div class="flex items-center gap-1 text-primary mt-1">
+<span class="material-symbols-outlined text-[16px] bg-primary/10 rounded-full" id="change-onion-icon">trending_up</span>
+<span class="font-label-sm text-label-sm" id="change-onion-text"></span>
+</div>
+</div>
+</div>
+<!-- Card 2: Tomato -->
+<div class="snap-center shrink-0 w-[240px] bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border-t-[2px] border-primary overflow-hidden flex flex-col group relative">
+<div class="h-20 w-full bg-cover bg-center relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDu32M1-d1J6IMCuAU6J-IuSQYjYuKfayhTYBVkSmj1bHa8zBc3CXzu3w-E-Gz3McZxoe8GPGEsQrMBPUgISuMcG5mPWrui7aUpXGE32gDbXF-9mEvpew6fc2AQEVXcnvbv_1ldEZfYSQH2NuZZbdcfuqiL15O7ZFoa_E23nxr5WYzPtP0IGqbIa6UoNsgcb8ea9naKRNHDGr-MG67wXD9NOTBGdphtF8zV46VrTr0YZErGw_gPL3i9LA')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-4 flex flex-col gap-2 relative z-10 -mt-8">
+<div class="bg-surface-container-lowest rounded shadow-sm w-max px-2 py-1 mb-1">
+<span class="font-label-md text-label-md text-on-surface">Tomato (Nashik)</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface" id="price-tomato">Loading...<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/qtl</span></span>
+</div>
+<div class="flex items-center gap-1 text-primary mt-1">
+<span class="material-symbols-outlined text-[16px] bg-primary/10 rounded-full" id="change-tomato-icon">trending_up</span>
+<span class="font-label-sm text-label-sm" id="change-tomato-text"></span>
+</div>
+</div>
+</div>
+<!-- Card 3: Cotton -->
+<div class="snap-center shrink-0 w-[240px] bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border-t-[2px] border-error overflow-hidden flex flex-col group relative">
+<div class="h-20 w-full bg-cover bg-center relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOIwuhi5hWcSKE9W4-y4zECRAOFPknmuJRD9MVxSO2g4Kmja0QzzEb3oGl8b1mfCOcNtuiKdflQBL-GkWx9Z5Vu3_ze4zAKw9eEuV1fCx5JDKpXk_vwbERhBCJxldNPksXR23j1EpmwRsG2EH1EN90UnqaH-Nm0ZQGsZXY-2i5KsFWitgsRYPtXiDjjwTItx5fGRdtpGsSNkHZZjOtf5V-Lk3ITKFv1cCCeB2Bc9wBLS8inBz0nXoGJg')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-4 flex flex-col gap-2 relative z-10 -mt-8">
+<div class="bg-surface-container-lowest rounded shadow-sm w-max px-2 py-1 mb-1">
+<span class="font-label-md text-label-md text-on-surface">Cotton (Nashik)</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface" id="price-cotton">Loading...<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/qtl</span></span>
+</div>
+<div class="flex items-center gap-1 text-error mt-1">
+<span class="material-symbols-outlined text-[16px] bg-error/10 rounded-full" id="change-cotton-icon">trending_down</span>
+<span class="font-label-sm text-label-sm" id="change-cotton-text"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Price Trends Graph -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] p-4 flex flex-col gap-4 border border-outline-variant/30">
+<div class="flex items-center justify-between border-b border-outline-variant/50 pb-3">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Price History</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Actual mandi prices over time</span>
+</div>
+<div class="bg-surface-container rounded-lg p-1 flex">
+<button class="px-3 py-1 bg-surface-container-lowest shadow-sm rounded-md font-label-sm text-label-sm text-on-surface" id="btn-cotton" onclick="switchCrop('cotton')">Cotton</button>
+<button class="px-3 py-1 text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-variant rounded-md transition-colors" id="btn-onion" onclick="switchCrop('onion')">Onion</button>
+</div>
+</div>
+<div class="w-full mt-2">
+<canvas height="150" id="forecastChart"></canvas>
+</div>
+</section>
+<!-- Quick Links / Actions -->
+<section class="grid grid-cols-2 gap-gutter-md w-full">
+<a href="create-lot.html" class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary rounded-xl h-touch-target-min flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(21,66,18,0.2)] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">add_box</span>
+<span class="font-label-md text-label-md">Create Lot</span>
+</a>
+<a href="transaction-tracker.html" class="bg-transparent border-[1.5px] border-primary text-primary hover:bg-primary/5 rounded-xl h-touch-target-min flex items-center justify-center gap-2 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Check Logistics</span>
+</a>
+</section>
+</main>
+<nav class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 rounded-t-xl md:hidden">
+<button aria-current="page" class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-95 transition-transform duration-150 h-full min-w-[64px]">
+<span class="material-symbols-outlined fill" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm mt-1">Markets</span>
+</button>
+<a href="create-lot.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-95 transition-transform duration-150 h-full min-w-[64px]">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-label-sm text-label-sm mt-1">Lots</span>
+</a>
+<a href="buyer-market.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-95 transition-transform duration-150 h-full min-w-[64px]">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-sm text-label-sm mt-1">Trade</span>
+</a>
+<a href="transaction-tracker.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-95 transition-transform duration-150 h-full min-w-[64px]">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-sm text-label-sm mt-1">Logistics</span>
+</a>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-95 transition-transform duration-150 h-full min-w-[64px]">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-1">Wallet</span>
+</button>
+</nav>
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/translate.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/market-intelligence.js"></script>
+</body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Lot - Quality Grading | AgriHarvest</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#281800",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#a1d494",
+                        "background": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed": "#d4e3ff",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffddb0",
+                        "surface": "#f8f9fa",
+                        "surface-tint": "#3b6934",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2d5a27",
+                        "primary-fixed-dim": "#a1d494",
+                        "secondary-container": "#feba47",
+                        "on-primary-fixed-variant": "#23501e",
+                        "surface-variant": "#e1e3e4",
+                        "outline": "#72796e",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-background": "#191c1d",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#bcf0ae",
+                        "on-primary-container": "#9dd090",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-container": "#704b00",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "tertiary-container": "#005193",
+                        "on-surface-variant": "#42493e",
+                        "primary": "#154212",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#805600",
+                        "on-tertiary-container": "#9cc5ff",
+                        "on-tertiary-fixed": "#001c39",
+                        "surface-container-high": "#e7e8e9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary": "#003a6c",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c2c9bb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "secondary-fixed-dim": "#feba47"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "touch-target-min": "48px",
+                        "stack-sm": "0.5rem",
+                        "margin-mobile": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-md": "1rem",
+                        "gutter-md": "1rem"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c2c9bb; border-radius: 10px; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-surface dark:bg-inverse-surface shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-2xl" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">AgriHarvest</h1>
+</div>
+<button class="w-[48px] h-[48px] flex justify-center items-center rounded-full hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors text-on-surface-variant dark:text-surface-variant active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="flex-grow pt-[80px] pb-[100px] px-margin-mobile flex flex-col gap-stack-lg max-w-2xl mx-auto w-full">
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Create New Lot</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enter details to initiate quality grading.</p>
+</div>
+<div class="flex items-center justify-between w-full px-2 mb-2 relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-surface-variant -z-10"></div>
+<div class="flex flex-col items-center gap-1 bg-surface px-1">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Details</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-surface px-1 relative">
+<div class="absolute -left-[50vw] right-[50vw] top-4 h-0.5 bg-primary -z-10 w-[100vw] max-w-[200px]"></div>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container border-2 border-primary flex items-center justify-center shadow-sm">
+<span class="font-label-md text-label-md">2</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Quality</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-surface px-1">
+<div class="w-8 h-8 rounded-full bg-surface text-outline border-2 border-outline-variant flex items-center justify-center">
+<span class="font-label-md text-label-md">3</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Review</span>
+</div>
+</div>
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-5 flex flex-col gap-stack-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Basic Information</h3>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface" for="cropType">Crop Type</label>
+<div class="relative">
+<select class="w-full h-[48px] px-4 appearance-none rounded-lg border border-outline bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-body-md" id="cropType">
+<option disabled="" selected="" value="">Select crop type...</option>
+<option value="onion">Onion</option>
+<option value="tomato">Tomato</option>
+<option value="cotton">Cotton</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface" for="variety">Variety</label>
+<input class="w-full h-[48px] px-4 rounded-lg border border-outline bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-body-md placeholder:text-outline-variant" id="variety" placeholder="e.g., Nashik Red, Roma" type="text"/>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface" for="quantity">Estimated Quantity</label>
+<div class="relative flex items-center">
+<input class="w-full h-[48px] pl-4 pr-24 rounded-lg border border-outline bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-body-md placeholder:text-outline-variant" id="quantity" placeholder="0.00" type="number"/>
+<div class="absolute right-1 top-1 bottom-1 flex items-center px-3 bg-surface-container-low rounded-md border-l border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant">Quintals</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface" for="expectedPrice">Expected Price</label>
+<div class="relative flex items-center">
+<input class="w-full h-[48px] pl-4 pr-24 rounded-lg border border-outline bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-body-md placeholder:text-outline-variant" id="expectedPrice" placeholder="0.00" type="number"/>
+<div class="absolute right-1 top-1 bottom-1 flex items-center px-3 bg-surface-container-low rounded-md border-l border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant">₹/Quintal</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface" for="location">Location</label>
+<input class="w-full h-[48px] px-4 rounded-lg border border-outline bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-body-md text-body-md placeholder:text-outline-variant" id="location" placeholder="e.g., Nashik" type="text"/>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-5 flex flex-col gap-stack-md">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Quality Grading</h3>
+<span class="material-symbols-outlined text-secondary">fact_check</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Assess the following parameters for the lot.</p>
+<label class="flex items-start gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="relative flex items-center justify-center mt-0.5">
+<input class="grade-check peer w-6 h-6 appearance-none rounded border-2 border-outline checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-sm opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Moisture Level</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Confirm within acceptable range (e.g., &lt; 12%)</span>
+</div>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="relative flex items-center justify-center mt-0.5">
+<input class="grade-check peer w-6 h-6 appearance-none rounded border-2 border-outline checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-sm opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Foreign Matter</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Check for debris, stones, or other impurities.</span>
+</div>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="relative flex items-center justify-center mt-0.5">
+<input class="grade-check peer w-6 h-6 appearance-none rounded border-2 border-outline checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-sm opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Grain Size &amp; Color</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Assess uniformity and expected coloration.</span>
+</div>
+</label>
+</section>
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-5 flex flex-col gap-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Visual Evidence</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Upload clear photos of the lot for the digital certificate.</p>
+<div class="w-full rounded-xl border-2 border-dashed border-primary/40 bg-surface-container-low hover:bg-primary/5 transition-colors p-6 flex flex-col items-center justify-center gap-3 cursor-pointer min-h-[160px]">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface text-on-surface-variant border border-outline-variant flex items-center justify-center shadow-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl">photo_library</span>
+</div>
+</div>
+<div class="text-center">
+<span class="font-label-md text-label-md text-primary block mb-1">Tap to upload photos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">JPG, PNG up to 5MB</span>
+</div>
+</div>
+</section>
+<div class="mt-4">
+<button class="w-full h-[56px] bg-primary text-on-primary rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-2 shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all" id="submitLotBtn">
+<span>Generate Quality Certificate</span>
+<span class="material-symbols-outlined text-lg">workspace_premium</span>
+</button>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant mt-2" id="submitStatus"></p>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none rounded-t-xl md:hidden flex">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-lg w-[72px]" href="market-intelligence.html">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-label-sm text-label-sm">Markets</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 active:scale-95 transition-transform duration-150 w-[72px]" href="create-lot.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">package_2</span>
+<span class="font-label-sm text-label-sm font-bold">Lots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-lg w-[72px]" href="buyer-market.html">
+<span class="material-symbols-outlined mb-1">handshake</span>
+<span class="font-label-sm text-label-sm">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-lg w-[72px]" href="transaction-tracker.html">
+<span class="material-symbols-outlined mb-1">local_shipping</span>
+<span class="font-label-sm text-label-sm">Logistics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all rounded-lg w-[72px]" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Wallet</span>
+</a>
+</nav>
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/translate.js"></script>
+<script src="js/create-lot.js"></script>
+</body></html>

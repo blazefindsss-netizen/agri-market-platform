@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Create an account</h1>
+  <form id="signupForm" class="card">
+    <label>Full name</label>
+    <input id="name" placeholder="Full name" required>
+    <label>Phone number</label>
+    <input id="phone" placeholder="Phone number" required>
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Password" required>
+    <label>I am a</label>
+    <select id="role">
+      <option value="farmer">Farmer</option>
+      <option value="buyer">Buyer</option>
+    </select>
+    <label>Location</label>
+    <input id="location" placeholder="e.g. Nashik">
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Log in</a></p>
+
+  <script src="js/api.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/translate.js"></script>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = await apiCall('/auth/signup', 'POST', {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        password: document.getElementById('password').value,
+        role: document.getElementById('role').value,
+        location: document.getElementById('location').value
+      });
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('role', data.user.role);
+        alert('Signed up successfully!');
+window.location.href = data.user.role === 'farmer' ? 'market-intelligence.html' : 'buyer-market.html';        alert('Signup failed: ' + (data.error || 'Unknown error'));
+      }
+    });
+  </script>
+</body>
+</html>
