@@ -1,10 +1,14 @@
 from flask import Blueprint, request, jsonify
 import bcrypt, jwt
+import os
+from dotenv import load_dotenv
 from extensions import db
 from models import User
 
+load_dotenv()
+
 auth_bp = Blueprint('auth', __name__)
-SECRET = 'hackathon-secret-key'
+SECRET = os.environ.get('JWT_SECRET', 'fallback-dev-secret-change-me')
 
 @auth_bp.route('/signup', methods=['POST'])
 def signup():
